@@ -1,0 +1,70 @@
+# 使用 Python 3.8 版本的基礎映像
+FROM python:3.8-slim-buster as build
+
+# 設置工作目錄
+WORKDIR /build
+
+# 安裝編譯工具和庫
+RUN apt-get update && \
+                    apt-get install -y gcc \
+                    build-essential \
+                    wget \
+                    autoconf \
+                    libtool \
+                    openjdk-11-jdk \
+                    locales
+
+# 設置 locale
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
+    echo "zh_TW.UTF-8 UTF-8" >> /etc/locale.gen && \
+    locale-gen && \
+    update-locale
+
+# 設置環境變數
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+# 下載並編譯 TA-Lib
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+    tar -xvzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib/ && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install
+
+# 安裝 Python 的 TA-Lib
+RUN pip install --no-cache-dir TA-Lib
+
+# 設置 Spark 環境變數
+ENV SPARK_VERSION=3.0.0
+ENV HADOOP_VERSION=3.2
+ENV SPARK_HOME=/spark
+ENV PATH=$PATH:$SPARK_HOME/bin
+
+# 下載和安裝 Spark
+#https://archive.apache.org/dist/spark/spark-3.0.0/spark-3.0.0-bin-hadoop3.2.tgz
+
+RUN wget -q https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
+    tar -xzf spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz && \
+    mv spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION} /spark && \
+    rm spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz
+
+# 清理 APT 和臨時文件
+RUN apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /build/ta-lib-0.4.0-src.tar.gz
+
+# 設置最終的工作目錄
+WORKDIR /app
+
+# 複製需求文件並安裝依賴
+
+COPY requirements.txt /app/
+RUN apt-get update && \
+    apt-get install -y libpq-dev && \
+    pip install --upgrade pip && \
+    pip install --no-cache-dir -r /app/requirements.txt
+
+# 設置入口指令
+CMD ["pyspark"]

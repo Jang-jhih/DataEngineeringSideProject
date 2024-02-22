@@ -1,0 +1,18 @@
+# https://github.com/mage-ai/compose-quickstart.git
+FROM mageai/mageai:latest
+
+
+# 下載並編譯 TA-Lib
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+    tar -xvzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib/ && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install
+
+
+
+# 安裝 TA-Lib 和其他依賴
+COPY requirements.txt /tmp/
+RUN pip install --no-cache-dir --upgrade pip --default-timeout=100 && \
+    pip install --no-cache-dir TA-Lib -r /tmp/requirements.txt

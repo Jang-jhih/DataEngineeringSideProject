@@ -1,0 +1,77 @@
+# 編譯源碼 #
+############
+*.pyc
+*.o
+*.so
+
+# 包文件 #
+##########
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# 日誌和數據庫文件 #
+###################
+*.log
+*.sql
+*.sqlite
+*.db
+*.csv
+*.json
+*.xml
+
+# Python 序列化對象文件 #
+########################
+*.pickle
+*.pkl
+
+# 系統生成的文件 #
+##################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# 編輯器目錄和文件 #
+####################
+.vscode/
+.vscode-server/
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+
+# 專案特定排除項 #
+##################
+# Airflow 工作流程
+airflow/strategy
+# 策略自動化目錄
+auto_strategy/
+# 系統測試目錄
+system_test/
+# Jupyter 筆記本目錄
+jupyter/
+# 多進程處理目錄
+multi_processing/
+# 數據庫和管理界面的卷
+volume/postgres-db-volume
+volume/pgadmin
+# 字體文件
+*.ttf
+
+# 其他特定文件 #
+################
+README_another.md
+README_origin.md
+.pylint.d
+push_sideproject.sh
+.gitignore_repo2
+.gitignore_repo1

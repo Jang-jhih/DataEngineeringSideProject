@@ -1,0 +1,45 @@
+FROM apache/airflow:2.8.1
+
+
+USER root
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y openjdk-8-jdk \
+                        wget \
+                        build-essential \
+                        libkrb5-dev \
+                        libpq-dev 
+
+
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+    tar -xvzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib/ && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install
+
+ENV HIVE_HOME=/opt/hive
+ENV PATH=$HIVE_HOME/bin:$PATH
+ENV JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+
+USER airflow
+COPY requirements.txt /requirements.txt
+
+# 升級 pip 並安裝依賴 hive 與hdfs
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r /requirements.txt \
+    pip install apache-airflow-providers-apache-hdfs \
+                 thrift_sasl \
+                 clickhouse-connect \
+                 apache-airflow-providers-apache-spark
+
+
+
+
+
+# 安裝 Python 的 TA-Lib
+RUN pip install --no-cache-dir TA-Lib
+# USER root
+
+
+

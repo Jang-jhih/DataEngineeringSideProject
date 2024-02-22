@@ -1,0 +1,50 @@
+# 設定自動偵測文本文件，並在提交時轉換為 LF，在 Windows 上檢出時轉換為 CRLF
+* text=auto
+
+# 確保所有人在提交時都將換行符轉換為 LF，即使他們是在 Windows 上
+* text=auto eol=lf
+
+# 對於特定的文件類型，始終使用 LF 結尾，這對於腳本文件很重要
+*.sh text eol=lf
+*.py text eol=lf
+*.bat text eol=crlf
+
+# 指定文件作為二進制，防止對其進行換行符轉換或合併衝突的文本比較
+*.jpg binary
+*.png binary
+*.gif binary
+
+# 定制合併策略
+# 例如，對於 .properties 文件，如果發生衝突，自動選擇當前分支的版本
+*.properties merge=ours
+
+# 過濾器示例
+# 可以設置過濾器以在提交前後處理文件
+# 注意：需要分別在 Git 配置中定義過濾器的行為（如 smudge/clean 腳本）
+# *.c filter=clang-format
+
+# 定義自定義 diff 程序
+# 對於特定的文件類型，使用特定的工具來顯示差異
+# *.png diff=pngdiff
+
+# 語言統計
+# 通過 GitHub 的 Linguist 工具，忽略某些文件或目錄的語言統計
+# linguist-documentation, linguist-language, linguist-vendored, linguist-generated
+# *.md linguist-documentation=1
+# third_party/* linguist-vendored
+
+# 保護 LF 換行符，防止在文本文件中混入 CRLF
+*.md text eol=lf
+*.txt text eol=lf
+
+# 確保這些腳本文件在 Unix 和 Linux 系統上具有可執行權限
+*.sh text eol=lf linguist-language=Shell script=exec
+
+# 指定某些文件類型不應被 Git 視為文本文件，從而避免進行換行符的自動轉換
+# 這對於某些特殊格式的文件來說非常重要，這些文件可能不希望被當作純文本處理
+*.pdf binary
+*.exe binary
+
+# 確保這些文件保持 Unix 風格的換行符，即使在 Windows 上也是如此
+*.js text eol=lf
+*.css text eol=lf

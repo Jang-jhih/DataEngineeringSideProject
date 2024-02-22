@@ -1,0 +1,24 @@
+notebook
+finlab==1.0.2
+plotly
+ipykernel
+# scipy
+matplotlib
+aiofiles
+deap
+xgboost
+# scikit-learn
+pandas_ta
+pyecharts
+pandas
+discord.py
+kaleido
+openai==0.28
+# google-api-python-client
+# google-auth-httplib2
+# google-auth-oauthlib
+# pika
+nbformat
+pyspark==3.0.0
+psycopg2
+clickhouse-driver

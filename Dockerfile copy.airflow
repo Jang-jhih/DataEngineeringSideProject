@@ -1,0 +1,49 @@
+FROM apache/airflow:2.8.1
+
+
+USER root
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y default-jdk \
+                        wget \
+                        build-essential \
+                        libkrb5-dev \
+                        libpq-dev 
+    # wget https://dlcdn.apache.org/hive/hive-3.1.3/apache-hive-3.1.3-bin.tar.gz && \
+    # tar -zxvf apache-hive-3.1.3-bin.tar.gz -C /opt/ && \
+    # mv /opt/apache-hive-3.1.3-bin /opt/hive
+
+
+RUN wget http://prdownloads.sourceforge.net/ta-lib/ta-lib-0.4.0-src.tar.gz && \
+    tar -xvzf ta-lib-0.4.0-src.tar.gz && \
+    cd ta-lib/ && \
+    ./configure --prefix=/usr && \
+    make && \
+    make install
+
+ENV HIVE_HOME=/opt/hive
+ENV PATH=$HIVE_HOME/bin:$PATH
+# ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
+
+USER airflow
+COPY requirements.txt /requirements.txt
+
+# 升級 pip 並安裝依賴 hive 與hdfs
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r /requirements.txt \
+    pip install apache-airflow-providers-apache-hive \
+                 apache-airflow-providers-apache-hdfs \
+                 thrift_sasl \
+                 clickhouse-connect \
+                 apache-airflow-providers-apache-spark
+
+
+
+
+
+# 安裝 Python 的 TA-Lib
+RUN pip install --no-cache-dir TA-Lib
+# USER root
+
+
+
