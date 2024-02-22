@@ -52,10 +52,50 @@ services:
     networks:
       - my_network
 
+
+  clickhouse:
+    image: 'clickhouse/clickhouse-server:${CHVER:-latest}'
+    user: '101:101'
+    container_name: clickhouse
+    hostname: clickhouse
+    volumes:
+      - ./fs/volumes/clickhouse/etc/clickhouse-server/config.d/config.xml:/etc/clickhouse-server/config.d/config.xml
+      - ./fs/volumes/clickhouse/etc/clickhouse-server/users.d/users.xml:/etc/clickhouse-server/users.d/users.xml
+    ports:
+      - '127.0.0.1:8123:8123'
+      - '127.0.0.1:9000:9000'
+    depends_on:
+      - clickhouse-keeper
+    networks:
+      - my_network
+
+      
+  clickhouse-keeper:
+    image: 'clickhouse/clickhouse-keeper:${CHKVER:-latest-alpine}'
+    user: '101:101'
+    container_name: clickhouse-keeper
+    hostname: clickhouse-keeper
+    volumes:
+      - ./fs/volumes/clickhouse-keeper/etc/clickhouse-keeper/keeper_config.xml:/etc/clickhouse-keeper/keeper_config.xml
+    ports:
+      - '127.0.0.1:9181:9181'
+    networks:
+      - my_network
+
+
+  tabix:
+    image: spoonest/clickhouse-tabix-web-client
+    container_name: tabix
+    ports:
+      - '80:80'
+    networks:
+      - my_network
+
+
+
 volumes:
-  # postgres-db-volume:
   redis:
-  #   external: false
+
 
 networks:
   my_network:

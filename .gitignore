@@ -62,8 +62,9 @@ jupyter/
 # 多進程處理目錄
 multi_processing/
 # 數據庫和管理界面的卷
-volume/postgres-db-volume
-volume/pgadmin
+volume/postgres-db-volume/
+volume/pgadmin/
+volume/fs/
 # 字體文件
 *.ttf
 
