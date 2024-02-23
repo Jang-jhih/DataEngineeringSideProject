@@ -30,16 +30,13 @@
 
 - **用途**: 數據存儲解決方案，包含Postgres、ClickHouse、Redis。這些工具分別用於關係數據存儲、高速列式存儲和快速鍵值存儲。
 
-## 數據倉庫
+## datawarehouse
 
 本專案中，`hadoop-spark`資料夾內的Hive和`volume`資料夾內的ClickHouse作為數據倉庫使用，支持大規模數據的存儲和分析。
 
 - **Hive**: 提供SQL接口進行數據查詢，適用於批量數據處理和深度分析。
 - **ClickHouse**: 高性能列式存儲，適合快速數據讀取和實時分析。
 
-## 開始使用
 
-要開始使用本專案，請確保你的開發環境已安裝Docker和Docker Compose。透過Docker Compose，你可以輕鬆地啟動所有需要的服務。
 
-```bash
-docker-compose up -d
+
