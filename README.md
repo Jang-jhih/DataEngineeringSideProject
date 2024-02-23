@@ -32,7 +32,7 @@
 
 ## datawarehouse
 
-本專案中，`hadoop-spark`資料夾內的Hive和`volume`資料夾內的ClickHouse作為數據倉庫使用，支持大規模數據的存儲和分析。
+本專案中，`hadoop-spark`資料夾內的Hive和`volume`資料夾內的ClickHouse作為數據倉庫使用，Hive支持大規模數據的存儲和分析，ClickHouse作為BI倉儲。
 
 - **Hive**: 提供SQL接口進行數據查詢，適用於批量數據處理和深度分析。
 - **ClickHouse**: 高性能列式存儲，適合快速數據讀取和實時分析。
