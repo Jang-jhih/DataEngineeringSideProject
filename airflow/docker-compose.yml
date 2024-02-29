@@ -27,6 +27,7 @@ x-airflow-common:
     AIRFLOW_CONN_HIVE_CLI_DEFAULT: 'hive-cli://hive:hive@hive-server:10000/default?authMechanism=PLAIN'
     HADOOP_CONF_DIR: /opt/airflow/other
     YARN_CONF_DIR: /opt/airflow/other
+    HOST_PWD: ${PWD}
 
 
   volumes:
@@ -43,6 +44,8 @@ x-airflow-common:
     - ../jupyter/strategy:/home/jovyan/work
 
     - ./docker/entrypoint.sh:/opt/airflow/docker/entrypoint.sh
+
+    - /var/run/docker.sock:/var/run/docker.sock # for docker operator
     
   user: "${AIRFLOW_UID:-50000}:0"
   

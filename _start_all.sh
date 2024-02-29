@@ -21,8 +21,8 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker rmi $(docker images -q)
 
-# docker network rm my_network
-# docker network create my_network
+docker network rm my_network
+docker network create my_network
 # sudo service docker restart
 # docker compose logs -f spark-worker-1
 # sudo service docker restart
