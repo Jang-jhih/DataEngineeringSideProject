@@ -83,49 +83,49 @@ data_types = {
         'data_type': 'price:收盤價',
         'table_name': 'price_closing_price',  
         'otc_date': False,
-        'hdfs_path': '/user/hue/finlab/data/price_closing_price'
+        # 'hdfs_path': '/user/hue/finlab/data/price_closing_price'
     },
     'price_closing_price_otc': {
         'data_type': 'price:收盤價',
         'table_name': 'price_closing_price', 
         'otc_date': True,
-        'hdfs_path': '/user/hue/finlab/data/price_closing_price_otc'
+        # 'hdfs_path': '/user/hue/finlab/data/price_closing_price_otc'
     },
     'price_transaction_count_otc': {
         'data_type': 'price:成交筆數',
         'table_name': 'price_transaction_count_otc',  
         'otc_date': True,
-        'hdfs_path': '/user/hue/finlab/data/price_transaction_count_otc'
+        # 'hdfs_path': '/user/hue/finlab/data/price_transaction_count_otc'
     },
     'price_transaction_count': {
         'data_type': 'price:成交筆數',
         'table_name': 'price_transaction_count',  
         'otc_date': False,
-        'hdfs_path': '/user/hue/finlab/data/price_transaction_count'
+        # 'hdfs_path': '/user/hue/finlab/data/price_transaction_count'
     },
     'etl_adj_close': {
         'data_type': 'etl:adj_close',
         'table_name': 'etl_adj_close',  
         'otc_date': False,
-        'hdfs_path': '/user/hue/finlab/data/etl_adj_close'
+        # 'hdfs_path': '/user/hue/finlab/data/etl_adj_close'
     },
     'etl_adj_close_otc': {
         'data_type': 'etl:adj_close',
         'table_name': 'etl_adj_close',  
         'otc_date': True,
-        'hdfs_path': '/user/hue/finlab/data/etl_adj_close_otc'
+        # 'hdfs_path': '/user/hue/finlab/data/etl_adj_close_otc'
     },
     'etl_adj_high': {
         'data_type': 'etl:adj_high',
         'table_name': 'etl_adj_high',  
         'otc_date': False,
-        'hdfs_path': '/user/hue/finlab/data/etl_adj_high'
+        # 'hdfs_path': '/user/hue/finlab/data/etl_adj_high'
     },
     'etl_adj_low': {
         'data_type': 'etl:adj_low',
         'table_name': 'etl_adj_low',  
         'otc_date': False,
-        'hdfs_path': '/user/hue/finlab/data/etl_adj_low'
+        # 'hdfs_path': '/user/hue/finlab/data/etl_adj_low'
     },
 }
 

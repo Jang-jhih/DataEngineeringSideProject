@@ -157,6 +157,31 @@ services:
     networks:
       - my_network
 
+
+  hue:
+    image: gethue/hue:latest
+    hostname: hue
+    container_name: hue
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./conf.dist:/usr/share/hue/desktop/conf
+    networks:
+      - my_network
+    depends_on:
+      - namenode
+      - datanode
+      - resourcemanager
+      - historyserver
+      - hive-server
+      - hive-metastore
+      - hive-metastore-postgresql
+      - presto-coordinator
+    
+
+
+
+
 volumes:
   hadoop_namenode:
   hadoop_datanode:
