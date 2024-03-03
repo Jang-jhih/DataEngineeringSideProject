@@ -16,6 +16,8 @@
 
 ## 專案結構
 
+輔助開發AI包含:chatGPT、Github copilot、Perplexity
+
 專案包含以下幾個主要的資料夾，每個資料夾都扮演著不同的角色：
 
 ### `airflow`
@@ -25,25 +27,25 @@
 
 
 ### `jupyter`
-- **進度**: spark_test.ipynb測試hdfs路徑有誤
+- **進度**: spark_test.ipynb測試hdfs路徑有誤。
 - **用途**: 包含Finlab交易程式、Spark以及一般Jupyter程式。這是策略開發和數據分析的工作區，提供了一個互動式的環境。
 
 
 
 ### `multi_processing`
-- **進度**: 待加入基因演算法
+- **進度**: 待加入基因演算法。
 - **用途**: 多線程基因演算法的實現。用於策略優化，通過多線程技術提高計算效率。
 
 
 
 ### `superset`
-- **進度**: 建置完成，尚未將doshbord加入
+- **進度**: 建置完成，尚未將doshbord加入。
 - **用途**: BI與資料分析工具。Superset提供數據視覺化功能，幫助用戶分析交易數據和策略表現。
 
 
 
 ### `hadoop`
-- **進度**: 建置完成，hue完成測試，等待加入
+- **進度**: 建置完成。
 - **用途**: 包含Hadoop、Hive、Spark的大數據處理環境。用於處理和分析大規模數據集。
 
 
@@ -70,7 +72,7 @@
 本專案中，`hadoop-spark`資料夾內的Hive和`volume`資料夾內的ClickHouse作為數據倉庫使用，Hive支持大規模數據的存儲和分析，ClickHouse作為BI倉儲。
 
 - **Hive**: 提供SQL接口進行數據查詢，適用於批量數據處理和深度分析(hive://hive@hive-server:10000/default)。
-- **ClickHouse**: 高性能列式存儲，適合快速數據讀取和實時分析()
+- **ClickHouse**: 高性能列式存儲，適合快速數據讀取和實時分析。
 
 
 
