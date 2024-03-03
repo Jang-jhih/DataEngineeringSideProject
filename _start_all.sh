@@ -28,3 +28,4 @@ docker network create my_network
 # sudo service docker restart
 
 
+# sudo chmod -R 777 /var/run/docker.sock

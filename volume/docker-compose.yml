@@ -23,8 +23,6 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
-    # expose:
-      # - 6379
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -33,24 +31,12 @@ services:
       start_period: 30s
     restart: always
     volumes:
-      # - redis:/data
+      - redis:/data
       # - ./data/redis:/data
-      - /media/jacob/first_disk/data/redis:/data
+      # - /media/jacob/first_disk/data/redis:/data
     networks:
       - my_network
 
-  # pgadmin:
-  #   container_name: pgadmin4
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: "admin@example.com" # 這裡設置你的 pgAdmin 登錄郵箱
-  #     PGADMIN_DEFAULT_PASSWORD: "admin" # 這裡設置你的 pgAdmin 登錄密碼
-  #   ports:
-  #     - "8888:80" # 將 pgAdmin 的 80 端口映射到主機的 8080 端口
-  #   volumes:
-  #     - ./pgadmin:/var/lib/pgadmin # 持久化 pgAdmin 數據到本地目錄
-  #   networks:
-  #     - my_network
 
 
   clickhouse:
@@ -83,15 +69,18 @@ services:
       - my_network
 
 
-  tabix:
-    image: spoonest/clickhouse-tabix-web-client
-    container_name: tabix
-    ports:
-      - '80:80'
-    networks:
-      - my_network
-
-
+  # pgadmin:
+  #   container_name: pgadmin4
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: "admin@example.com" # 這裡設置你的 pgAdmin 登錄郵箱
+  #     PGADMIN_DEFAULT_PASSWORD: "admin" # 這裡設置你的 pgAdmin 登錄密碼
+  #   ports:
+  #     - "8888:80" # 將 pgAdmin 的 80 端口映射到主機的 8080 端口
+  #   volumes:
+  #     - ./pgadmin:/var/lib/pgadmin # 持久化 pgAdmin 數據到本地目錄
+  #   networks:
+  #     - my_network
 
 volumes:
   redis:
