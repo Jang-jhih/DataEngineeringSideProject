@@ -17,7 +17,7 @@ docker compose -f ./volume/docker-compose.yml up -d
 # airflow
 docker compose -f ./airflow/docker-compose.yml up -d
 
-# # jupyter
+# jupyter
 docker compose -f ./jupyter/docker-compose.yml up -d
 
 #superset
