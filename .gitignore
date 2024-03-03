@@ -78,6 +78,7 @@ hadoop/hadoop_namenode/
 hadoop/hadoop_datanode/
 hadoop/hadoop_namenode/
 hadoop/hadoop_historyserver/
+hadoop/hive/metastore/postgresql
 jupyter/strategy/metastore_db/
 volume/postgres-db-volume/
 volume/pgadmin/
