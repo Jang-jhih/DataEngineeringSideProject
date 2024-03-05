@@ -79,6 +79,8 @@ hadoop/hadoop_datanode/
 hadoop/hadoop_historyserver/
 hadoop/hive/metastore/
 queue/conduktor_data/
+queue/conduktor_data/
+queue/onnectors/
 jupyter/strategy/metastore_db/
 volume/postgres-db-volume/
 volume/pgadmin/
