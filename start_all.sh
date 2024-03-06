@@ -4,10 +4,11 @@
 directories=(
     "volume"
     "superset"
-    "queue"
+    # "queue"
     "jupyter"
     "hadoop"
-    "datahub"
+    # "datahub"
+    "airflow"
 )
 
 # 在每個目錄中運行 docker-compose up -d
