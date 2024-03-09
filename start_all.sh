@@ -7,7 +7,7 @@ directories=(
     # "queue"
     "jupyter"
     "hadoop"
-    # "datahub"
+    "datahub"
     "airflow"
 )
 

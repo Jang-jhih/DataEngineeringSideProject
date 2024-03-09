@@ -30,8 +30,30 @@ dag = DAG(
 # 假設您的所有 Python 腳本都位於 /opt/airflow/strategy
 scripts_path = "/opt/airflow/strategy"
 
-script_files = [f for f in os.listdir(scripts_path) if f.endswith('.py')]
-
+script_files = [                                
+                'ETF.py',
+                'Monthly_Revenue_Momentum.py',
+                'Volume_Contracting_Price.py',
+                'PB_Income_Growth.py',
+                '國家認證.py',
+                '穩穩抬轎.py',
+                'left.py',
+                '_5_Line.py',
+                'High_Dividend_Yield_1.py',
+                'High_Dividend_Yield_2.py',
+                'Relative_Strength_Value.py',
+                'Financial_Targets.py',
+                '營收股價雙渦輪.py',
+                'PE_Growth.py',
+                'Short_Term_Trading.py',
+                'Genetic_Algorithm.py',
+                'Financial_Health.py',
+                'boss_inv.py',
+                '瘋龍流Ultra.py',
+                '_Composit_Program.py',
+                '除息兔.py',
+                '除權息放空兔.py',
+                ]
 # 儲存上一個任務，用於設定依賴
 previous_task = None
 

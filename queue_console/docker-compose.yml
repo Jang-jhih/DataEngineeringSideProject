@@ -1,0 +1,61 @@
+version: '3.8'
+
+services:  
+
+
+  conduktor-console:
+    image: conduktor/conduktor-console:1.21.1
+    ports:
+      - "8083:8080"
+    volumes:
+      - conduktor_data:/var/conduktor
+    environment:
+      
+      CDK_MONITORING_CORTEX-URL: http://conduktor-monitoring:9009/
+      CDK_MONITORING_ALERT-MANAGER-URL: http://conduktor-monitoring:9010/
+      CDK_MONITORING_CALLBACK-URL: http://conduktor-platform:8080/monitoring/api/
+      CDK_MONITORING_NOTIFICATIONS-CALLBACK-URL: http://localhost:8080
+
+
+      CDK_DATABASE_URL: "postgresql://postgres:postgres@postgres:5432/conduktor-console"
+
+      CDK_CLUSTERS_0_ID: "local-kafka"
+      CDK_CLUSTERS_0_NAME: "local-kafka"
+      CDK_CLUSTERS_0_BOOTSTRAPSERVERS: "broker:29092"
+      CDK_CLUSTERS_0_SCHEMAREGISTRY_URL: "http://schema-registry:8081"
+      CDK_CLUSTERS_0_COLOR: "#6A57C8"
+      CDK_CLUSTERS_0_ICON: "kafka"
+      # CDK_CLUSTERS_1_ID: "cdk-gateway"
+      # CDK_CLUSTERS_1_NAME: "cdk-gateway"
+      # CDK_CLUSTERS_1_BOOTSTRAPSERVERS: "conduktor-gateway:6969"
+      # CDK_CLUSTERS_1_SCHEMAREGISTRY_URL: "http://redpanda-0:18081"
+      # CDK_CLUSTERS_1_KAFKAFLAVOR_URL: "http://conduktor-gateway:8888"
+      # CDK_CLUSTERS_1_KAFKAFLAVOR_USER: "admin"
+      # CDK_CLUSTERS_1_KAFKAFLAVOR_PASSWORD: "conduktor"
+      # CDK_CLUSTERS_1_KAFKAFLAVOR_VIRTUALCLUSTER: "passthrough"
+      # CDK_CLUSTERS_1_KAFKAFLAVOR_TYPE: "Gateway"
+      # CDK_CLUSTERS_1_COLOR: "#6A57C8"
+      # CDK_CLUSTERS_1_ICON: "dog"
+
+    networks:
+      - my_network
+    
+
+      
+  conduktor-monitoring:
+    image: conduktor/conduktor-console-cortex:1.21.1
+    environment:
+      CDK_CONSOLE-URL: "http://conduktor-console:8080"
+    networks:
+      - my_network
+
+
+volumes:
+  pg_data: {}
+  conduktor_data: {}
+
+
+networks:
+  my_network:
+    driver: bridge
+    external: true
