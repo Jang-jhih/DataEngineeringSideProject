@@ -7,8 +7,9 @@ directories=(
     "superset"
     "jupyter"
     "hadoop"
-    "datahub"
     "queue_console"
+    "datahub"
+    
     
 )
 
