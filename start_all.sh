@@ -3,12 +3,13 @@
 # 定義 Docker Compose 文件所在的目錄
 directories=(
     "volume"
+    "airflow"
     "superset"
-    # "queue"
     "jupyter"
     "hadoop"
     "datahub"
-    "airflow"
+    "queue_console"
+    
 )
 
 # 在每個目錄中運行 docker-compose up -d

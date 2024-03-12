@@ -15,7 +15,7 @@ default_args = {
     'owner': 'airflow',
     # 'start_date': datetime(2024, 1, 16),
     'start_date': days_ago(1),
-    'retries': 1,
+    # 'retries': 1,
 }
 
 # DAG 定義
@@ -31,6 +31,14 @@ dag = DAG(
 scripts_path = "/opt/airflow/strategy"
 
 script_files = [f for f in os.listdir(scripts_path) if f.endswith('.py')]
+
+list_strategy = '_Composit_Program.py'
+
+# 僅當 list_strategy 在列表中時，將其移動到末尾
+if list_strategy in script_files:
+    script_files.append(script_files.pop(script_files.index(list_strategy)))
+
+
 
 # 儲存上一個任務，用於設定依賴
 previous_task = None

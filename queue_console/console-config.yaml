@@ -1,0 +1,32 @@
+
+monitoring:
+  cortex-url: 'http://conduktor-monitoring:9009/'
+  alert-manager-url: 'http://conduktor-monitoring:9010/'
+  callback-url: 'http://conduktor-console:8080/monitoring/api/'
+  notifications-callback-url: 'http://localhost:8080'
+
+database:
+  host: 'postgres'
+  port: 5432
+  name: 'conduktor-console'
+  username: 'postgres'
+  password: 'postgres'
+  connection_timeout: 30 # in seconds
+
+
+
+
+clusters:
+  - id: 'local-kafka'
+    name: 'local-kafka'
+    bootstrapServers: 'broker:29092'
+  #   properties: |
+  #     security.protocol=SASL_SSL
+  #     sasl.mechanism=PLAIN
+  #     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="<username>" password="<password>";
+    schemaRegistry:
+  #     id: 'confluent-sr'
+      url: 'http://schema-registry:8081'
+  #     security:
+  #       username: 'user'
+  #       password: 'password'
