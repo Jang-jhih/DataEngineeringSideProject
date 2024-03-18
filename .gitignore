@@ -84,4 +84,3 @@ queue/onnectors/
 jupyter/strategy/metastore_db/
 volume/postgres-db-volume/
 volume/pgadmin/
-volume/fs/

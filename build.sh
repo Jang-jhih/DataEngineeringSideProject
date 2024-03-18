@@ -22,12 +22,12 @@ echo "Logging in to Docker Hub..."
 docker login || exit 1
 
 # # 構建並推送 jupyter 映像
-build_and_push "jupyter" "zebraking30/finlab-jupyter:latest" "Dockerfile.jupyter"
+# build_and_push "jupyter" "zebraking30/finlab-jupyter:latest" "Dockerfile.jupyter"
 
 # # 構建並推送 magic 映像
 # build_and_push "magic" "zebraking30/finlab-mageai:latest" "Dockerfile.magai"
 
 # 構建並推送 airflow 映像
-# build_and_push "airflow" "zebraking30/finlab-airflow:latest" "Dockerfile.airflow"
+build_and_push "airflow" "zebraking30/finlab-airflow:latest" "Dockerfile.airflow"
 
-echo "All images pushed to Docker Hub successfully!"
+# echo "All images pushed to Docker Hub successfully!"

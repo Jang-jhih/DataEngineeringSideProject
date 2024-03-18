@@ -74,7 +74,24 @@ def task2(*args, **kwargs):
     except Exception as e:
         print(f"Error in task2: {e}")
 
+
 def task3(*args, **kwargs):
+    ChartPlotter, Message, days_ago_str,finlab,data = common_setup()
+    chart = ChartPlotter(start_date=days_ago_str, end_date=None)
+    window = 10
+    webhook_url = Variable.get('Warning_pred')
+    # rsi_doc = Variable.get('RSI_DOC')
+
+    try:
+        volatility_image_path, content, fig = chart.volatility(window=window, save_image=True)
+        if volatility_image_path:
+            Message(webhook_url, doc="").send_image_message(obj=volatility_image_path, content=content)
+    except Exception as e:
+        print(f"Error in task2: {e}")
+
+
+
+def task4(*args, **kwargs):
     ChartPlotter, Message, days_ago_str,finlab,data = common_setup()
     chart = ChartPlotter(start_date=days_ago_str, end_date=None, gpt_model='gpt-4')
     webhook_url = Variable.get('Stock_Market_pred')
@@ -89,6 +106,7 @@ def task3(*args, **kwargs):
 
 task_1 = PythonOperator(task_id='deviation', python_callable=task1, dag=dag)
 task_2 = PythonOperator(task_id='RSI', python_callable=task2, dag=dag)
-task_3 = PythonOperator(task_id='adls', python_callable=task3, dag=dag)
+task_3 = PythonOperator(task_id='volatility', python_callable=task3, dag=dag)
+task_4 = PythonOperator(task_id='adls', python_callable=task3, dag=dag)
 
-task_1 >> task_2 >> task_3
+task_1 >> task_2 >> task_3 >> task_4

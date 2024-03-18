@@ -1,5 +1,5 @@
 notebook
-finlab==1.0.2
+finlab==1.0.9
 plotly
 ipykernel
 # scipy
