@@ -1,4 +1,3 @@
-
 monitoring:
   cortex-url: 'http://conduktor-monitoring:9009/'
   alert-manager-url: 'http://conduktor-monitoring:9010/'
@@ -13,20 +12,28 @@ database:
   password: 'postgres'
   connection_timeout: 30 # in seconds
 
-
-
-
 clusters:
   - id: 'local-kafka'
     name: 'local-kafka'
     bootstrapServers: 'broker:29092'
-  #   properties: |
-  #     security.protocol=SASL_SSL
-  #     sasl.mechanism=PLAIN
-  #     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="<username>" password="<password>";
     schemaRegistry:
-  #     id: 'confluent-sr'
       url: 'http://schema-registry:8081'
-  #     security:
-  #       username: 'user'
-  #       password: 'password'
+
+# connectors:
+#   - name: clickhouse-sink
+#     className: com.clickhouse.kafka.connect.ClickHouseSinkConnector
+#     tasksMax: 1
+#     config:
+#       topics: genetic_algorithm_results
+#       ssl: "false"
+#       jdbcConnectionProperties: ""
+#       hostname: clickhouse
+#       database: default
+#       port: "8123"
+#       value.converter.schemas.enable: "false"
+#       value.converter: org.apache.kafka.connect.json.JsonConverter
+#       exactlyOnce: "true"
+#       username: default
+#       schemas.enable: "false"
+#       auto.create.tables: "true"
+#       table.name.format: "genetic_algorithm_results"

@@ -28,13 +28,17 @@ COPY requirements.txt /requirements.txt
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r /requirements.txt \
     pip install apache-airflow-providers-apache-hdfs \
-                 thrift_sasl \
-                 clickhouse-connect \
-                 apache-airflow-providers-apache-spark
+                thrift_sasl \
+                clickhouse-connect \
+                clickhouse-driver \
+                apache-airflow-providers-apache-spark \
+                apache-airflow-providers-apache-hive \
+                apache-airflow-providers-apache-kafka 
 
 
 
-RUN pip install --no-cache-dir apache-airflow-providers-apache-hive
+
+
 
 
 # 安裝 Python 的 TA-Lib

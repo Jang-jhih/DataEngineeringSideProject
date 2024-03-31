@@ -47,6 +47,7 @@ services:
     volumes:
       - ./fs/volumes/clickhouse/etc/clickhouse-server/config.d/config.xml:/etc/clickhouse-server/config.d/config.xml
       - ./fs/volumes/clickhouse/etc/clickhouse-server/users.d/users.xml:/etc/clickhouse-server/users.d/users.xml
+      - ./fs/volumes/clickhouse/data:/var/lib/clickhouse
     ports:
       - '127.0.0.1:8123:8123'
       - '127.0.0.1:9000:9000'

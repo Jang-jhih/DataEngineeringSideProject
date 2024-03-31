@@ -1,23 +1,5 @@
 #!/bin/bash
 
-# airflow connections add '_mongoid'  --conn-uri 'mongo://mongo:mongo@mongo:27017/'
-# airflow connections add '_mysqlid'  --conn-uri 'mysql://root:airflow@mysql:3306/'
-# airflow connections add '_postgresql'  --conn-uri 'postgres://postgres:postgres@postgres:5432/stock'
-# airflow connections add '_hive'  --conn-uri 'hive://hive@hive-server:10000/default'
-# airflow connections add 'hive_default'  --conn-uri 'hive://hive@hive-server:10000/default'
-
-
-# airflow connections add '_webhdfs' --conn-uri 'webhdfs://namenode:50070'
-
-
-#
-# airflow connections add 'hive_cli_default' \
-#     --conn-type 'hive' \
-#     --conn-host 'hive-server' \
-#     --conn-port 10000 \
-#     --conn-login 'hive' \
-#     --conn-password 'hive' \
-#     --conn-extra '{"use_beeline": true}'
 
 airflow connections add 'hive_server_default' \
     --conn-type 'hiveserver2' \
@@ -32,13 +14,6 @@ airflow connections add 'hive_server_default' \
     }'
 
 
-# airflow connections add 'hive_default' \
-#     --conn-type 'hive_cli' \
-#     --conn-host 'hive-server' \
-#     --conn-port '10000' \
-#     --conn-schema 'default'
-
-
 
 airflow connections add '_webhdfs' \
     --conn-type 'hdfs' \
@@ -50,8 +25,18 @@ airflow connections add '_webhdfs' \
 
 
 
+# airflow connections add clickhouse_default\
+#                     --conn-type clickhouse\
+#                     --conn-host clickhouse\
+#                     --conn-port 9000\
+#                     --conn-schema default\
+#                     --conn-login default\
+#             --conn-extra '{"secure": false}'
+
+airflow connections add kafka_default\
+            --conn-type apache_kafka\
+            --conn-extra '{"bootstrap.servers":"broker:29092","group.id": "clickhouse_sync","auto.offset.reset": "earliest"}'
 
 
 airflow webserver
 
-# airflow connections test _webhdfs

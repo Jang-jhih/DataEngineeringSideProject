@@ -1,0 +1,7 @@
+sources:
+  - name: genetic_algorithm
+    database: default
+    schema: default
+    tables:
+      - name: results
+        identifier: genetic_algorithm_results_v2

@@ -1,20 +1,12 @@
-clickhouse_imdb:  
-  target: postgres  
-  outputs:  
-    clickhouse:  
+dbt_project:
+  target: dev
+  outputs:
+    dev:
       type: clickhouse  
-      schema: imdb_dbt  
+      schema: default  
       host: clickhouse  
       port: 8123  
       user: default  
       password: ''  
       secure: False
-    postgres:
-      type: postgres
-      host: postgres
-      user: postgres
-      pass: postgres
-      port: 5432
-      dbname: stock
-      schema: stock_data
 

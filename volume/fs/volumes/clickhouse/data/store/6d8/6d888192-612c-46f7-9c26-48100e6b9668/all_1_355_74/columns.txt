@@ -1,0 +1,6 @@
+columns format version: 1
+4 columns:
+`strategy_name` String
+`conditions` Array(String)
+`best_conditions` Tuple(conditions Array(String), params Map(String, Float64), daily_mean Float64, max_drawdown Float64, daily_sortino Float64)
+`worst_conditions` Tuple(conditions Array(String), params Map(String, Float64), daily_mean Float64, max_drawdown Float64, daily_sortino Float64)

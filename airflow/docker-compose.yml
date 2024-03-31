@@ -37,13 +37,15 @@ x-airflow-common:
     - ./plugins:/opt/airflow/plugins
     - ./other:/opt/airflow/other
     - ./webserver_config.py:/opt/airflow/webserver_config.py
+    
     # - ./airflow.cfg:/opt/airflow/airflow.cfg
     #以下是自訂volumes
-    - ./strategy:/opt/airflow/strategy
+    - ./strategy:/opt/airflow/strategy #策略
     - ../jupyter/.env:/opt/airflow/.env
-    - ../jupyter/strategy:/home/jovyan/work
+    - ../jupyter/strategy:/home/jovyan/work #策略
+    - ../clickhouse_dbt/dbt_project:/opt/airflow/dbt_project #clickhouse dbt
 
-    - ./docker/entrypoint.sh:/opt/airflow/docker/entrypoint.sh
+    - ./docker/entrypoint.sh:/opt/airflow/docker/entrypoint.sh # 啟動連線
 
     - /var/run/docker.sock:/var/run/docker.sock # for docker operator
     

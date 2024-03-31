@@ -3,12 +3,13 @@
 # 定義 Docker Compose 文件所在的目錄
 directories=(
     "volume"
-    "airflow"
+    "datahub"
     "superset"
     "jupyter"
-    "hadoop"
+    # "hadoop"
     "queue_console"
-    "datahub"
+    
+    "airflow"
     
     
 )
